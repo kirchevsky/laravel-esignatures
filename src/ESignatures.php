@@ -25,7 +25,7 @@ class ESignatures
         return $this->post('/contracts', $data);
     }
 
-    public function sendCustomPdfContract(string $pdfPath, array $signers, array $additionalData = []): array
+    public function sendCustomPdfContract(string $pdfPath, array $signers, string $templadeId, array $additionalData = []): array
     {
         $pdfBase64 = base64_encode(file_get_contents($pdfPath));
 
@@ -34,7 +34,7 @@ class ESignatures
                 'document_elements' => [
                     [
                         'type' => 'template',
-                        'template_id' => null,
+                        'template_id' => $templadeId,
                         'document' => [
                             'type' => 'pdf',
                             'file_base64' => $pdfBase64,
