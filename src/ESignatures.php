@@ -144,12 +144,15 @@ class ESignatures
     private function request(string $method, string $endpoint, array $options = []): array
     {
         try {
-            $fullUrl = $this->baseUrl . '/' . ltrim($endpoint, '/');
+            // Build the full URL manually
+            $fullUrl = rtrim($this->baseUrl, '/') . '/' . ltrim($endpoint, '/');
             if ($this->logger) {
                 $this->logger->info('Requesting URL', ['url' => $fullUrl]);
             }
 
-            $response = $this->client->request($method, $endpoint, $options);
+            // Make the request with the full URL
+            $response = $this->client->request($method, $fullUrl, $options);
+
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $e) {
             if ($this->logger) {
