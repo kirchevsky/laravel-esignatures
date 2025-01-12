@@ -144,6 +144,11 @@ class ESignatures
     private function request(string $method, string $endpoint, array $options = []): array
     {
         try {
+            $fullUrl = $this->baseUrl . '/' . ltrim($endpoint, '/');
+            if ($this->logger) {
+                $this->logger->info('Requesting URL', ['url' => $fullUrl]);
+            }
+
             $response = $this->client->request($method, $endpoint, $options);
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $e) {
@@ -152,7 +157,7 @@ class ESignatures
                     'method' => $method,
                     'endpoint' => $endpoint,
                     'options' => $options,
-                    'error' => $e->getMessage()
+                    'error' => $e->getMessage(),
                 ]);
             }
 
