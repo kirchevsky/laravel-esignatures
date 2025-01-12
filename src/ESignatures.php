@@ -31,15 +31,12 @@ class ESignatures
 
         $data = array_merge(
             [
-                'document_elements' => [
                     [
-                        'type' => 'template',
                         'template_id' => $templadeId,
                         'document' => [
                             'type' => 'pdf',
                             'file_base64' => $pdfBase64,
                         ],
-                    ],
                 ],
                 'signers' => $signers,
                 'title' => 'Custom PDF Contract',
