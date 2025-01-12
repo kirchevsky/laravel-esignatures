@@ -1,0 +1,25 @@
+{
+  "name": "kirchevsky/laravel-esignatures",
+  "description": "A Laravel module for integrating with eSignatures.io",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "kirchevsky\\ESignatures\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ihor Kyrchevskiy",
+      "email": "kirchevsky@gmail.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^7.0",
+    "psr/log": "^1.0 || ^2.0 || ^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "minimum-stability": "stable"
+}
