@@ -71,28 +71,6 @@ if ($response['status'] === 'queued') {
 }
 ```
 
-### Sending a Custom PDF for Signing
-
-```php
-$response = $eSignatures->sendCustomPdfContract(
-    storage_path('app/contracts/sample.pdf'),
-    [
-        [
-            'name' => 'Jane Doe',
-            'email' => 'jane@example.com',
-            'mobile' => '+9876543210',
-        ],
-    ],
-    [
-        'title' => 'Custom PDF Contract',
-        'metadata' => 'custom-metadata',
-    ]
-);
-
-if ($response['status'] === 'queued') {
-    echo "Custom PDF contract sent successfully!";
-}
-```
 
 ### Fetching Contract Details
 

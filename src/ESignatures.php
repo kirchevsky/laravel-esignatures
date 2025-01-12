@@ -25,28 +25,6 @@ class ESignatures
         return $this->post('/contracts', $data);
     }
 
-    public function sendCustomPdfContract(string $pdfPath, array $signers, string $templadeId, array $additionalData = []): array
-    {
-        $pdfBase64 = base64_encode(file_get_contents($pdfPath));
-
-        $data = array_merge(
-            [
-                    [
-                        'template_id' => $templadeId,
-                        'document' => [
-                            'type' => 'pdf',
-                            'file_base64' => $pdfBase64,
-                        ],
-                ],
-                'signers' => $signers,
-                'title' => 'Custom PDF Contract',
-            ],
-            $additionalData
-        );
-
-        return $this->sendContract($data);
-    }
-
     public function getContract(string $contractId): array
     {
         return $this->get("/contracts/{$contractId}");
