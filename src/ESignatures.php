@@ -130,14 +130,14 @@ class ESignatures
 
     private function get(string $endpoint, array $queryParams = []): array
     {
-        return $this->request('GET', $endpoint, ['query' => array_merge(['token' => $this->token], $queryParams)]);
+        return $this->request('GET', ltrim($endpoint, '/'), ['query' => array_merge(['token' => $this->token], $queryParams)]);
     }
 
     private function post(string $endpoint, array $data): array
     {
-        return $this->request('POST', $endpoint, [
+        return $this->request('POST', ltrim($endpoint, '/'), [
             'query' => ['token' => $this->token],
-            'json' => $data
+            'json' => $data,
         ]);
     }
 
